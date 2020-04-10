@@ -81,9 +81,21 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T>
    * @return a reference to the specified target
    * @throws ElementNotFoundException if the element is not in the tree
    */
-  public T find(T targetElement) throws ElementNotFoundException{
+  public T find(T targetElement, BinaryTreeNode<T> node) throws ElementNotFoundException{
     // To be completed as a Programming Project
-    return null;
+    if (node == null){
+      throw new ElementNotFoundException ("LinkedBinaryTree");
+    }else{
+      Comparable<T> comparable = (Comparable<T>)targetElement;
+      if (comparable.compareTo(node.element)== 0){
+        return node.element;
+      }else if(comparable.compareTo(node.element) < 0){
+        return find(targetElement, node.left);
+      }else if (comparable.compareTo(node.element) >= 0){
+        return find(targetElement, node.right);
+      }
+      return node.element;
+    }
   }
 
   /**
@@ -214,7 +226,25 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T>
    */
   public T removeMax() throws EmptyCollectionException{
     // To be completed as a Programming Project
-    return null;
+    T result = null;
+    if (isEmpty()){
+      throw new EmptyCollectionException ("LinkedBinaryTree");
+    }else{
+      if (root.right == null){
+        result = root.element;
+        root = root.left;
+      }else{
+        BinaryTreeNode<T> parent = root;
+        BinaryTreeNode<T> current = root.right;
+        while(current.right != null){
+          parent = current;
+          current = current.right;
+        }
+        result = current.element;
+        parent.right = current.left;
+      }
+    }
+    return result;
   }
 
   /**
@@ -227,7 +257,22 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T>
    */
   public T findMin() throws EmptyCollectionException{
     // To be completed as a Programming Project
-    return null;
+    T result = null;
+     if (isEmpty()){
+    	throw new EmptyCollectionException ("LinkedBinarySearchTree");
+    }else {
+    	BinaryTreeNode<T> parent = root;
+        BinaryTreeNode<T> current = root.left;
+        if (current == null) {
+        	result = parent.element;
+        }
+        while (current.left != null) {
+        	current = current.left;
+        
+        }
+        result = current.element;
+    }
+    return result;
   }
 
   /**
@@ -241,6 +286,20 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T>
    */
   public T findMax() throws EmptyCollectionException{
     // To be completed as a Programming Project
-    return null;
+    T result = null;
+    if (isEmpty()) {
+      throw new EmptyCollectionException ("LinkedBinaryTree");
+    }else {
+      BinaryTreeNode<T> parent = root;
+      BinaryTreeNode<T> current = root.right;
+      if (current == null) {
+        result = parent.element;
+      }
+      while(current.right != null) {
+        current = current.right;
+      }
+      result = current.element;
+    }
+      return result;
   }
 }

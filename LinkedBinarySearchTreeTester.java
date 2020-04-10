@@ -59,7 +59,23 @@ public class LinkedBinarySearchTreeTester{
     System.out.println("got:\t"+tree.find(4));
 
     System.out.println("test: find(8)");
-    System.out.println("expect:\tnull");
-    System.out.println("got:\t"+tree.find(8));
+    System.out.println("expect:\t8");
+    System.out.println("got:\t"+tree.find(8)); 
+
+    System.out.println("Find Min()");
+    System.out.println("expect:\t3");
+    System.out.println("got:\t"+tree.findMin());
+    
+    System.out.println("Find Max()");
+    System.out.println("expect:\t8");
+    System.out.println("got:\t"+tree.findMax());
+    
+    System.out.println("Remove Min()");
+    System.out.println("expect:\t3");
+    System.out.println("got:\t"+tree.removeMin());
+    
+    System.out.println("Remove Max()");
+    System.out.println("expect:\t8");
+    System.out.println("got:\t"+tree.removeMax());
   }
 }
