@@ -57,3 +57,14 @@ got:    3
 Remove Max()
 expect: 8
 got:    8
+
+Question 1
+If there is no child node it replace with null. if there is child node it take the child node with the greater value.
+The Code Explationation
+if there is only right child of deleted node means left child is NULL (if part) then direct return right child of that node.
+if there is only left child of deleted node means right child is NULL (else if part) then direct return left child of that node.
+Question 2
+It replace the remove node with child node of the lesser value instead the one with the greater value.
+Since maintain BST property it is mendatory that deleted node replace with just after node or just before node in inorder means deleted node replace with either inorder successor or inorder predessor so that BST property maintain.
+inorder predessor is node that appear just before a node in inorder traversal.
+suppose Y is inorder predessor of node X then Node Y appear just before node X in inorder traversal.
